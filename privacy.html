@@ -1,0 +1,238 @@
+<title>Cupdin Privacy Policy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap');
+
+  :root {
+    --cream: #FAF5EE;
+    --espresso: #2E211A;
+    --terracotta: #C1592A;
+    --sage: #7C8F6B;
+    --gold: #D9A441;
+    --oat: #F1E9DD;
+    --taupe: #B9AA9B;
+    --text-secondary: #5c4d42;
+    --text-muted: #8a7a68;
+    --text-faint: #9c8f7a;
+
+    --bg: var(--cream);
+    --ink: var(--espresso);
+    --surface: var(--oat);
+    --surface-2: #ffffff;
+    --border: rgba(46,33,26,0.10);
+    --accent: var(--terracotta);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #211812; --ink: #F5EEE4; --surface: #2c2119; --surface-2: #33261c;
+      --border: rgba(245,238,228,0.10);
+      --text-secondary: #cbb9a7; --text-muted: #a5927e; --text-faint: #8f7d6a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #211812; --ink: #F5EEE4; --surface: #2c2119; --surface-2: #33261c;
+    --border: rgba(245,238,228,0.10);
+    --text-secondary: #cbb9a7; --text-muted: #a5927e; --text-faint: #8f7d6a;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--terracotta); }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .wrap { max-width: 1120px; margin: 0; padding: 0 56px; }
+  @media (max-width: 640px) { .wrap { padding: 0 24px; } }
+
+  .nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 56px; max-width: 1120px; margin: 0; }
+  @media (max-width: 640px) { .nav-inner { padding: 16px 24px; } }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+  .brand-mark { width: 32px; height: 32px; border-radius: 9px; background: var(--espresso); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+  .nav-links a { text-decoration: none; color: inherit; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.current { color: var(--terracotta); }
+  @media (max-width: 640px) { .nav-links { gap: 16px; font-size: 13px; } }
+
+  .doc-head { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .doc-eyebrow { font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracotta); margin-bottom: 14px; }
+  .doc-head h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 800; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+  .doc-meta { margin-top: 14px; font-size: 13.5px; color: var(--text-muted); font-family: 'JetBrains Mono'; }
+  .doc-lede { margin-top: 20px; font-size: 16.5px; line-height: 1.6; color: var(--text-secondary); max-width: 62ch; }
+
+  .layout { display: grid; grid-template-columns: 220px 1fr; gap: 56px; padding: 48px 0 100px; align-items: start; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+  .toc { position: sticky; top: 88px; }
+  .toc-label { font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 14px; }
+  .toc a { display: block; font-size: 13.5px; font-weight: 600; color: var(--text-secondary); text-decoration: none; padding: 7px 0; border-left: 2px solid var(--border); padding-left: 14px; }
+  .toc a:hover { color: var(--terracotta); border-left-color: var(--terracotta); }
+  @media (max-width: 860px) { .toc { position: static; display: none; } }
+
+  .doc-body { max-width: 68ch; }
+  .doc-body section { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--border); scroll-margin-top: 90px; }
+  .doc-body section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .doc-body h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 10px; }
+  .doc-body h2 .num { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--text-faint); font-weight: 700; }
+  .doc-body h3 { font-size: 15px; font-weight: 700; margin-top: 24px; }
+  .doc-body p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-top: 14px; }
+  .doc-body ul { margin-top: 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .doc-body li { font-size: 15px; line-height: 1.6; color: var(--text-secondary); padding-left: 22px; position: relative; }
+  .doc-body li::before { content: '—'; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
+  .doc-body strong { color: var(--ink); font-weight: 700; }
+
+  .data-table { margin-top: 18px; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+  .data-row { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 16px; padding: 14px 18px; }
+  .data-row + .data-row { border-top: 1px solid var(--border); }
+  .data-row.head { background: var(--surface); font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-faint); }
+  .data-row div:not(.head) { font-size: 13.5px; }
+  .data-row .cat { font-weight: 700; color: var(--ink); font-size: 13.5px; }
+  .data-row .why, .data-row .basis { font-size: 13.5px; color: var(--text-secondary); }
+  @media (max-width: 560px) { .data-row { grid-template-columns: 1fr; gap: 4px; } .data-row.head { display: none; } .data-row:not(.head) div::before { content: attr(data-label) ": "; font-weight: 700; color: var(--text-faint); font-family: 'JetBrains Mono'; font-size: 10px; text-transform: uppercase; display: block; margin-top: 6px; } }
+
+  .callout { margin-top: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+  .callout strong { color: var(--ink); }
+
+  .contact-card { margin-top: 18px; background: var(--espresso); color: var(--cream); border-radius: 18px; padding: 26px 28px; }
+  .contact-card p { color: rgba(250,245,238,0.8); }
+  .contact-card a { color: var(--cream); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+  footer { padding: 44px 0 40px; border-top: 1px solid var(--border); }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono'; }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--terracotta); }
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">C</span>Cupdin</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html" class="current">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</nav>
+
+<header class="doc-head">
+  <div class="wrap">
+    <div class="doc-eyebrow">Legal</div>
+    <h1>Privacy Policy</h1>
+    <div class="doc-meta">Effective September 8, 2026 · Cupdin, an independently developed app based in India</div>
+    <p class="doc-lede">This explains what Cupdin collects when you log a cafe visit, why, and the choices you have. Plain language first — the specifics are below.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc">
+    <div class="toc-label">On this page</div>
+    <a href="#overview">Overview</a>
+    <a href="#data-we-collect">Data we collect</a>
+    <a href="#how-we-use-it">How we use it</a>
+    <a href="#sharing">Sharing &amp; visibility</a>
+    <a href="#storage">Storage &amp; security</a>
+    <a href="#your-choices">Your choices</a>
+    <a href="#children">Children's privacy</a>
+    <a href="#retention">Retention &amp; deletion</a>
+    <a href="#changes">Changes to this policy</a>
+    <a href="#contact">Contact us</a>
+  </nav>
+
+  <div class="doc-body">
+    <section id="overview">
+      <h2><span class="num">01</span>Overview</h2>
+      <p>Cupdin is a social log for cafe visits — you record where you went, what you had, and (optionally) who with. This policy covers the personal data the Cupdin app collects, why we collect it, who can see it, and how you can control or delete it.</p>
+      <p>We built Cupdin to run on as little personal data as the product needs. There's no ad network reading your feed, and we don't sell your data — full stop.</p>
+    </section>
+
+    <section id="data-we-collect">
+      <h2><span class="num">02</span>Data we collect</h2>
+      <p>Everything below is either data you provide directly or data generated by using the app's features.</p>
+      <div class="data-table">
+        <div class="data-row head"><div>Category</div><div>What it includes</div><div>Why we collect it</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">Account info</div><div class="why" data-label="Includes">Name, email address, profile photo, and your two-letter avatar initials, via Supabase authentication</div><div class="why" data-label="Why">To create and secure your account, and identify you to other users</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">Visit logs</div><div class="why" data-label="Includes">Cafe selected, items ordered, notes, companions tagged, and a public/private visibility setting</div><div class="why" data-label="Why">This is the core content of the app — what you post to your feed</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">Photos</div><div class="why" data-label="Includes">Any photo you attach to a visit log, selected via your device's photo library</div><div class="why" data-label="Why">To show a photo alongside your log entry, stored in Supabase Storage</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">City / location</div><div class="why" data-label="Includes">The city you set on your profile (e.g. Hyderabad) — not continuous or background GPS tracking</div><div class="why" data-label="Why">To show you the right city feed and local cafes</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">Social graph</div><div class="why" data-label="Includes">Who you follow, who follows you, blocked users, and companions tagged on a visit</div><div class="why" data-label="Why">To power your Following feed and friend-tagging features</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">Usage &amp; device data</div><div class="why" data-label="Includes">App version, crash logs, and basic device info</div><div class="why" data-label="Why">To diagnose bugs and keep the app stable</div></div>
+      </div>
+      <p>We don't collect payment information — Cupdin is free and has no in-app purchases at this time.</p>
+    </section>
+
+    <section id="how-we-use-it">
+      <h2><span class="num">03</span>How we use it</h2>
+      <ul>
+        <li><strong>To run the feed.</strong> Your public logs are shown to other users in your city's feed; private logs are shown only to people you've tagged or who follow you, per the visibility you chose.</li>
+        <li><strong>To power your profile.</strong> Visit counts, your loved-cafes ranking, and your 6-week activity chart are all computed from your own logged visits.</li>
+        <li><strong>To connect you with friends.</strong> Follower/following relationships and companion-tagging use your social graph data.</li>
+        <li><strong>To keep the app working and safe.</strong> Crash reports and moderation tools (like blocking and reporting) use account and usage data.</li>
+        <li><strong>To contact you when needed.</strong> Account-related emails only — we don't send marketing email.</li>
+      </ul>
+    </section>
+
+    <section id="sharing">
+      <h2><span class="num">04</span>Sharing &amp; visibility</h2>
+      <p>Cupdin is a social app, so some of what you post is designed to be seen by others:</p>
+      <ul>
+        <li><strong>Public logs</strong> are visible to anyone using the app in your city's feed, along with your name, avatar, and any tagged companions.</li>
+        <li><strong>Private logs</strong> are visible only to your followers/friends, per the in-app visibility toggle.</li>
+        <li><strong>Your profile</strong> (name, avatar, stats, loved cafes) is visible to other users of the app.</li>
+      </ul>
+      <div class="callout"><strong>We do not sell personal data</strong> to advertisers or data brokers, and we don't share it with third parties for their own marketing purposes.</div>
+      <p>We use the following service providers to operate Cupdin, each bound to process data only on our behalf:</p>
+      <ul>
+        <li><strong>Supabase</strong> — authentication, database, and file storage for photos and app data.</li>
+      </ul>
+      <p>We may disclose limited data if required by law, to enforce our <a href="terms.html">Terms &amp; Conditions</a>, or to protect the safety of our users.</p>
+    </section>
+
+    <section id="storage">
+      <h2><span class="num">05</span>Storage &amp; security</h2>
+      <p>Your data is stored on Supabase's managed infrastructure with encryption in transit. We restrict internal access to what's needed to operate the app, and rely on Supabase's row-level security to keep private logs private.</p>
+      <p>No system is perfectly secure, and we can't guarantee absolute security — but we take reasonable, industry-standard measures to protect your information.</p>
+    </section>
+
+    <section id="your-choices">
+      <h2><span class="num">06</span>Your choices</h2>
+      <ul>
+        <li><strong>Edit or delete a log</strong> any time from your profile.</li>
+        <li><strong>Switch a log's visibility</strong> between public and private when you post it.</li>
+        <li><strong>Block or report</strong> another user directly from their profile or a log of theirs.</li>
+        <li><strong>Control photo access</strong> through your device's OS-level permission prompt — Cupdin only requests your photo library when you choose to add a photo.</li>
+        <li><strong>Delete your account</strong> by emailing us at <a href="mailto:hello@cupdin.com">hello@cupdin.com</a>; we'll remove your account and personal data, aside from what we're required to retain (see Retention below).</li>
+      </ul>
+    </section>
+
+    <section id="children">
+      <h2><span class="num">07</span>Children's privacy</h2>
+      <p>Cupdin is not directed at children under 13, and we don't knowingly collect personal data from anyone under that age. If you believe a child has created an account, contact us and we'll remove it.</p>
+    </section>
+
+    <section id="retention">
+      <h2><span class="num">08</span>Retention &amp; deletion</h2>
+      <p>We keep your account and log data for as long as your account is active. When you delete your account, we remove your personal data and posted content within 30 days, except where we're legally required to retain records (for example, to resolve disputes or comply with a legal obligation) or where content has been cached elsewhere by other users before deletion.</p>
+    </section>
+
+    <section id="changes">
+      <h2><span class="num">09</span>Changes to this policy</h2>
+      <p>If we make a material change to this policy, we'll update the effective date above and, where appropriate, notify you in the app. Continuing to use Cupdin after a change means you accept the updated policy.</p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="num">10</span>Contact us</h2>
+      <p>Questions about this policy, or want to exercise any of the choices above?</p>
+      <div class="contact-card">
+        <p style="margin-top:0; color: var(--cream); font-weight: 700; font-size: 15px;">Reach the Cupdin team</p>
+        <p>Email us and we'll get back to you as soon as we can.</p>
+        <p style="margin-top: 14px;"><a href="mailto:hello@cupdin.com">hello@cupdin.com</a></p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Cupdin. Made in Hyderabad.</span>
+    <span><a href="index.html">Home</a> · <a href="terms.html">Terms &amp; conditions</a></span>
+  </div>
+</footer>

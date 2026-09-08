@@ -1,0 +1,250 @@
+<title>Cupdin Terms &amp; Conditions</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap');
+
+  :root {
+    --cream: #FAF5EE;
+    --espresso: #2E211A;
+    --terracotta: #C1592A;
+    --sage: #7C8F6B;
+    --gold: #D9A441;
+    --oat: #F1E9DD;
+    --taupe: #B9AA9B;
+    --text-secondary: #5c4d42;
+    --text-muted: #8a7a68;
+    --text-faint: #9c8f7a;
+
+    --bg: var(--cream);
+    --ink: var(--espresso);
+    --surface: var(--oat);
+    --surface-2: #ffffff;
+    --border: rgba(46,33,26,0.10);
+    --accent: var(--terracotta);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #211812; --ink: #F5EEE4; --surface: #2c2119; --surface-2: #33261c;
+      --border: rgba(245,238,228,0.10);
+      --text-secondary: #cbb9a7; --text-muted: #a5927e; --text-faint: #8f7d6a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #211812; --ink: #F5EEE4; --surface: #2c2119; --surface-2: #33261c;
+    --border: rgba(245,238,228,0.10);
+    --text-secondary: #cbb9a7; --text-muted: #a5927e; --text-faint: #8f7d6a;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: var(--terracotta); }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .wrap { max-width: 1120px; margin: 0; padding: 0 56px; }
+  @media (max-width: 640px) { .wrap { padding: 0 24px; } }
+
+  .nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 56px; max-width: 1120px; margin: 0; }
+  @media (max-width: 640px) { .nav-inner { padding: 16px 24px; } }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+  .brand-mark { width: 32px; height: 32px; border-radius: 9px; background: var(--espresso); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+  .nav-links a { text-decoration: none; color: inherit; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.current { color: var(--terracotta); }
+  @media (max-width: 640px) { .nav-links { gap: 16px; font-size: 13px; } }
+
+  .doc-head { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
+  .doc-eyebrow { font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracotta); margin-bottom: 14px; }
+  .doc-head h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 800; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
+  .doc-meta { margin-top: 14px; font-size: 13.5px; color: var(--text-muted); font-family: 'JetBrains Mono'; }
+  .doc-lede { margin-top: 20px; font-size: 16.5px; line-height: 1.6; color: var(--text-secondary); max-width: 62ch; }
+
+  .layout { display: grid; grid-template-columns: 220px 1fr; gap: 56px; padding: 48px 0 100px; align-items: start; }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+
+  .toc { position: sticky; top: 88px; }
+  .toc-label { font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 14px; }
+  .toc a { display: block; font-size: 13.5px; font-weight: 600; color: var(--text-secondary); text-decoration: none; padding: 7px 0; border-left: 2px solid var(--border); padding-left: 14px; }
+  .toc a:hover { color: var(--terracotta); border-left-color: var(--terracotta); }
+  @media (max-width: 860px) { .toc { position: static; display: none; } }
+
+  .doc-body { max-width: 68ch; }
+  .doc-body section { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--border); scroll-margin-top: 90px; }
+  .doc-body section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+  .doc-body h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 10px; }
+  .doc-body h2 .num { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--text-faint); font-weight: 700; }
+  .doc-body h3 { font-size: 15px; font-weight: 700; margin-top: 24px; }
+  .doc-body p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-top: 14px; }
+  .doc-body ul { margin-top: 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .doc-body li { font-size: 15px; line-height: 1.6; color: var(--text-secondary); padding-left: 22px; position: relative; }
+  .doc-body li::before { content: '—'; position: absolute; left: 0; color: var(--terracotta); font-weight: 700; }
+  .doc-body strong { color: var(--ink); font-weight: 700; }
+
+  .callout { margin-top: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; font-size: 14px; line-height: 1.6; color: var(--text-secondary); }
+  .callout strong { color: var(--ink); }
+  .callout.warn { border-color: rgba(193,89,42,0.35); }
+
+  .contact-card { margin-top: 18px; background: var(--espresso); color: var(--cream); border-radius: 18px; padding: 26px 28px; }
+  .contact-card p { color: rgba(250,245,238,0.8); }
+  .contact-card a { color: var(--cream); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+  footer { padding: 44px 0 40px; border-top: 1px solid var(--border); }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono'; }
+  .footer-bottom a { color: var(--text-muted); text-decoration: none; }
+  .footer-bottom a:hover { color: var(--terracotta); }
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">C</span>Cupdin</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html" class="current">Terms</a>
+    </div>
+  </div>
+</nav>
+
+<header class="doc-head">
+  <div class="wrap">
+    <div class="doc-eyebrow">Legal</div>
+    <h1>Terms &amp; Conditions</h1>
+    <div class="doc-meta">Effective September 8, 2026 · Cupdin, an independently developed app based in India</div>
+    <p class="doc-lede">The rules for using Cupdin — what you can post, what we expect from you, and what happens if something goes wrong. By creating an account or using the app, you agree to these terms.</p>
+  </div>
+</header>
+
+<div class="wrap layout">
+  <nav class="toc">
+    <div class="toc-label">On this page</div>
+    <a href="#acceptance">Acceptance of terms</a>
+    <a href="#eligibility">Eligibility &amp; accounts</a>
+    <a href="#your-content">Your content</a>
+    <a href="#conduct">Acceptable use</a>
+    <a href="#moderation">Moderation &amp; enforcement</a>
+    <a href="#ip">Intellectual property</a>
+    <a href="#third-party">Third-party info</a>
+    <a href="#cafe-listings">Who qualifies as a cafe</a>
+    <a href="#disclaimers">Disclaimers</a>
+    <a href="#liability">Limitation of liability</a>
+    <a href="#termination">Termination</a>
+    <a href="#changes">Changes to these terms</a>
+    <a href="#governing-law">Governing law</a>
+    <a href="#contact">Contact us</a>
+  </nav>
+
+  <div class="doc-body">
+    <section id="acceptance">
+      <h2><span class="num">01</span>Acceptance of terms</h2>
+      <p>These Terms &amp; Conditions ("Terms") govern your use of Cupdin, the mobile app for logging cafe visits (the "App"), operated as an independently developed app based in India ("we," "us," "Cupdin"). By downloading, creating an account, or otherwise using the App, you agree to these Terms and our <a href="privacy.html">Privacy Policy</a>. If you don't agree, please don't use the App.</p>
+    </section>
+
+    <section id="eligibility">
+      <h2><span class="num">02</span>Eligibility &amp; accounts</h2>
+      <ul>
+        <li>You must be at least 13 years old to use Cupdin.</li>
+        <li>You're responsible for the accuracy of the information on your account and for keeping your login credentials secure.</li>
+        <li>One account per person. Impersonating another person or creating an account for someone else without permission isn't allowed.</li>
+        <li>You're responsible for all activity that happens under your account.</li>
+      </ul>
+    </section>
+
+    <section id="your-content">
+      <h2><span class="num">03</span>Your content</h2>
+      <p>"Your Content" means anything you post through Cupdin — visit logs, notes, photos, companion tags, and profile information.</p>
+      <ul>
+        <li><strong>You own it.</strong> Posting to Cupdin doesn't transfer ownership of your content to us.</li>
+        <li><strong>You grant us a license to show it.</strong> By posting, you give us a non-exclusive, worldwide, royalty-free license to host, store, and display Your Content within the App, to the audience determined by the visibility setting you choose (public or friends-only).</li>
+        <li><strong>You're responsible for it.</strong> You confirm you have the rights to anything you post (particularly photos), and that it doesn't violate anyone else's rights or these Terms.</li>
+        <li><strong>Tagging others.</strong> When you tag a companion on a visit, you're representing that you have their okay to do so.</li>
+      </ul>
+    </section>
+
+    <section id="conduct">
+      <h2><span class="num">04</span>Acceptable use</h2>
+      <p>To keep Cupdin a trustworthy record of real cafe visits, you agree not to:</p>
+      <ul>
+        <li>Post content that's false, misleading, defamatory, harassing, hateful, sexually explicit, or otherwise unlawful.</li>
+        <li>Log a visit to a cafe you didn't actually visit, or fabricate reviews or ratings.</li>
+        <li>Impersonate any person or misrepresent your affiliation with any cafe or business.</li>
+        <li>Harass, bully, stalk, or threaten other users.</li>
+        <li>Use the App to collect other users' data for purposes outside the App (scraping, bulk data collection).</li>
+        <li>Attempt to interfere with, disrupt, or reverse-engineer the App or its infrastructure.</li>
+        <li>Post spam, unauthorized advertising, or malicious content.</li>
+      </ul>
+    </section>
+
+    <section id="moderation">
+      <h2><span class="num">05</span>Moderation &amp; enforcement</h2>
+      <p>You can block or report other users and content directly in the App. We may review reported content and, at our discretion, remove content, restrict features, or suspend or terminate accounts that violate these Terms — with or without notice, depending on severity.</p>
+      <div class="callout">We aim to be proportionate: a first-time, low-severity issue typically gets a warning or content removal before any account action.</div>
+    </section>
+
+    <section id="ip">
+      <h2><span class="num">06</span>Intellectual property</h2>
+      <p>The Cupdin name, logo, app design, and underlying software are owned by us or our licensors and protected by intellectual property law. Except for Your Content, nothing in these Terms grants you any right to use our trademarks, branding, or software outside of normal use of the App.</p>
+    </section>
+
+    <section id="third-party">
+      <h2><span class="num">07</span>Third-party information</h2>
+      <p>Cupdin displays information about cafes (names, menus, locations) that may be sourced from users or public information. We don't guarantee this information is complete, current, or accurate, and cafes shown in the App aren't necessarily affiliated with or endorsing Cupdin.</p>
+    </section>
+
+    <section id="cafe-listings">
+      <h2><span class="num">08</span>Who qualifies as a cafe</h2>
+      <p>Cupdin is meant for real, publicly operating cafes, coffee shops, tea houses, and similar food-and-beverage spots people can walk into and order from. To keep the map useful and trustworthy, a place listed on Cupdin should be:</p>
+      <ul>
+        <li><strong>A real, operating business.</strong> It has a physical location, is currently open to the public, and serves food or drinks on-site.</li>
+        <li><strong>Independently verifiable.</strong> Its name and location can be reasonably confirmed to exist — we may remove listings we can't verify.</li>
+        <li><strong>Not a private residence or closed venue.</strong> Home setups, private events, or members-only spaces that aren't generally open to the public don't qualify.</li>
+        <li><strong>Not a duplicate.</strong> If a cafe already exists in the app, please log visits against the existing listing rather than creating a new one.</li>
+      </ul>
+      <h3>Adding your own cafe</h3>
+      <p>If you run a cafe and it isn't listed yet, or the listed details are wrong, email us at <a href="mailto:hello@cupdin.com">hello@cupdin.com</a> with the cafe's name, address, and menu. We review submissions before they go live. Listing a cafe on Cupdin is free and doesn't require any agreement between you and us beyond these Terms — we may edit, merge, or remove a listing at our discretion to keep the map accurate.</p>
+      <div class="callout">Cafe listings are treated the same as any other content on Cupdin under <a href="#third-party">Third-party information</a> above — we don't guarantee listing details are complete or current, and a listing isn't an endorsement by, or affiliation with, Cupdin.</div>
+    </section>
+
+    <section id="disclaimers">
+      <h2><span class="num">09</span>Disclaimers</h2>
+      <div class="callout warn">Cupdin is provided <strong>"as is"</strong> and <strong>"as available,"</strong> without warranties of any kind, whether express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We don't guarantee the App will be uninterrupted, error-free, or secure at all times.</div>
+      <p>Any decision to visit a cafe, meet another user in person, or rely on content posted by other users is made at your own discretion and risk.</p>
+    </section>
+
+    <section id="liability">
+      <h2><span class="num">10</span>Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, Cupdin and its developer will not be liable for any indirect, incidental, special, or consequential damages arising from your use of the App, including loss of data, loss of goodwill, or issues arising from interactions with other users or third-party cafes. Our total liability for any claim arising from these Terms or the App is limited to the amount you've paid us in the past 12 months (which, for a free app, is zero).</p>
+    </section>
+
+    <section id="termination">
+      <h2><span class="num">11</span>Termination</h2>
+      <p>You may stop using Cupdin and delete your account at any time by contacting us. We may suspend or terminate your access if you violate these Terms, or discontinue the App entirely with reasonable notice where practical. Sections that by their nature should survive termination (like Intellectual Property and Limitation of Liability) will continue to apply.</p>
+    </section>
+
+    <section id="changes">
+      <h2><span class="num">12</span>Changes to these terms</h2>
+      <p>We may update these Terms as the App evolves. If we make a material change, we'll update the effective date above and, where appropriate, notify you in the App. Continuing to use Cupdin after a change means you accept the updated Terms.</p>
+    </section>
+
+    <section id="governing-law">
+      <h2><span class="num">13</span>Governing law</h2>
+      <p>These Terms are governed by the laws of India, without regard to conflict-of-law principles. Any disputes arising from these Terms or the App will be subject to the exclusive jurisdiction of the courts of India.</p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="num">14</span>Contact us</h2>
+      <p>Questions about these Terms?</p>
+      <div class="contact-card">
+        <p style="margin-top:0; color: var(--cream); font-weight: 700; font-size: 15px;">Reach the Cupdin team</p>
+        <p>Email us and we'll get back to you as soon as we can.</p>
+        <p style="margin-top: 14px;"><a href="mailto:hello@cupdin.com">hello@cupdin.com</a></p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Cupdin. Made in Hyderabad.</span>
+    <span><a href="index.html">Home</a> · <a href="privacy.html">Privacy policy</a></span>
+  </div>
+</footer>

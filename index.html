@@ -1,0 +1,621 @@
+<title>Cupdin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap');
+
+  :root {
+    --cream: #FAF5EE;
+    --espresso: #2E211A;
+    --terracotta: #C1592A;
+    --sage: #7C8F6B;
+    --gold: #D9A441;
+    --oat: #F1E9DD;
+    --taupe: #B9AA9B;
+    --text-secondary: #5c4d42;
+    --text-muted: #8a7a68;
+    --text-faint: #9c8f7a;
+    --stripe-a: #e5dccc;
+    --stripe-b: #dcd1bd;
+
+    --bg: var(--cream);
+    --ink: var(--espresso);
+    --surface: var(--oat);
+    --surface-2: #ffffff;
+    --border: rgba(46,33,26,0.10);
+    --accent: var(--terracotta);
+    --accent-ink: var(--cream);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #211812;
+      --ink: #F5EEE4;
+      --surface: #2c2119;
+      --surface-2: #33261c;
+      --border: rgba(245,238,228,0.10);
+      --text-secondary: #cbb9a7;
+      --text-muted: #a5927e;
+      --text-faint: #8f7d6a;
+      --stripe-a: #33291f;
+      --stripe-b: #3c3025;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #211812;
+    --ink: #F5EEE4;
+    --surface: #2c2119;
+    --surface-2: #33261c;
+    --border: rgba(245,238,228,0.10);
+    --text-secondary: #cbb9a7;
+    --text-muted: #a5927e;
+    --text-faint: #8f7d6a;
+    --stripe-a: #33291f;
+    --stripe-b: #3c3025;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  a { color: inherit; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 28px;
+    max-width: 1120px; margin: 0 auto;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Manrope'; font-weight: 800; font-size: 19px; letter-spacing: -0.01em; }
+  .brand-mark {
+    width: 32px; height: 32px; border-radius: 9px;
+    background: var(--espresso); color: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 800;
+    flex-shrink: 0;
+  }
+  :root[data-theme="dark"] .brand-mark, @media (prefers-color-scheme: dark) { }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+  .nav-links a { text-decoration: none; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: var(--terracotta); color: var(--cream);
+    padding: 9px 18px; border-radius: 100px;
+    font-weight: 700; font-size: 13.5px; text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-mobile-hide { display: flex; }
+  @media (max-width: 720px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: 64px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-phone-col { order: -1; max-width: 300px; margin: 0 auto; }
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(193,89,42,0.10);
+    padding: 6px 12px; border-radius: 100px;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before { content: '☕'; font-family: initial; font-size: 13px; }
+  .hero h1 {
+    font-size: clamp(38px, 5.4vw, 60px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--terracotta);
+  }
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 46ch;
+  }
+  .hero-actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 13px 22px; border-radius: 100px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    border: none; cursor: pointer;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-secondary {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--taupe); }
+  .store-note { margin-top: 14px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono'; }
+
+  .hero-stats { display: flex; gap: 32px; margin-top: 40px; }
+  .hero-stat-num { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 22px; }
+  .hero-stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+  /* ---------- PHONE MOCK ---------- */
+  .phone-shell {
+    width: 320px; margin: 0 auto;
+    border-radius: 40px;
+    padding: 12px;
+    background: var(--espresso);
+    box-shadow: 0 30px 70px -20px rgba(46,33,26,0.45), 0 0 0 1px rgba(46,33,26,0.06);
+  }
+  .phone-screen {
+    background: var(--cream);
+    border-radius: 30px;
+    overflow: hidden;
+    height: 610px;
+    position: relative;
+    font-family: 'Manrope';
+    display: flex;
+    flex-direction: column;
+  }
+  .ph-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 18px 10px; }
+  .ph-title { font-weight: 800; font-size: 20px; color: var(--espresso); letter-spacing: -0.01em; }
+  .ph-avatar { width: 30px; height: 30px; border-radius: 100px; background: var(--espresso); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .ph-tabs { display: flex; gap: 8px; padding: 8px 18px 14px; }
+  .ph-tab { flex: 1; text-align: center; padding: 8px 0; border-radius: 100px; font-size: 12px; font-weight: 700; }
+  .ph-tab.active { background: var(--espresso); color: var(--cream); }
+  .ph-tab.inactive { background: var(--oat); color: #5c4d42; }
+  .ph-feed { flex: 1; overflow: hidden; padding: 0 14px 14px; display: flex; flex-direction: column; gap: 10px; }
+  .ph-card { background: var(--oat); border-radius: 18px; overflow: hidden; }
+  .ph-card-head { display: flex; align-items: center; gap: 8px; padding: 11px 12px 6px; }
+  .ph-card-avatar { width: 26px; height: 26px; border-radius: 100px; background: var(--terracotta); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 9.5px; font-weight: 700; flex-shrink: 0; }
+  .ph-card-name { font-size: 11.5px; font-weight: 700; color: var(--espresso); }
+  .ph-card-time { font-size: 9.5px; color: #8a7a68; font-weight: 500; }
+  .ph-tier { margin-left: auto; font-size: 9px; font-weight: 700; background: rgba(217,164,65,0.22); color: #8a651f; padding: 3px 8px; border-radius: 100px; }
+  .ph-photo {
+    height: 78px; margin: 4px 10px 0; border-radius: 11px;
+    background: repeating-linear-gradient(45deg, var(--stripe-a), var(--stripe-a) 6px, var(--stripe-b) 6px, var(--stripe-b) 12px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ph-photo span { font-family: 'JetBrains Mono'; font-size: 8px; color: #9c8f7a; }
+  .ph-card-body { padding: 9px 12px 12px; }
+  .ph-items { font-size: 12.5px; font-weight: 700; color: var(--espresso); }
+  .ph-cafe { font-size: 10.5px; font-weight: 600; color: #5c4d42; margin-top: 2px; }
+  .ph-like { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; background: rgba(46,33,26,0.06); padding: 5px 11px 5px 9px; border-radius: 100px; }
+  .ph-like-heart { font-size: 12px; color: var(--terracotta); }
+  .ph-like-count { font-size: 11px; font-weight: 700; color: #5c4d42; }
+  .ph-fab {
+    position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+    width: 48px; height: 48px; border-radius: 100px; background: var(--terracotta);
+    color: var(--cream); display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 800; box-shadow: 0 8px 18px rgba(193,89,42,0.4);
+    border: 3px solid var(--cream);
+  }
+  .ph-navbar { position: absolute; bottom: 0; left: 0; right: 0; height: 58px; background: var(--cream); border-top: 1px solid rgba(46,33,26,0.08); display: flex; align-items: center; justify-content: space-between; padding: 0 44px; }
+  .ph-nav-spacer { width: 48px; }
+  .ph-nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .ph-nav-icon { font-size: 15px; }
+  .ph-nav-label { font-size: 9px; font-weight: 700; }
+  .ph-nav-item.active .ph-nav-icon, .ph-nav-item.active .ph-nav-label { color: var(--terracotta); }
+  .ph-nav-item.inactive .ph-nav-icon, .ph-nav-item.inactive .ph-nav-label { color: var(--taupe); }
+
+  /* ---------- floating badges around phone ---------- */
+  .hero-phone-col { position: relative; }
+  .float-badge {
+    position: absolute;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 10px 14px;
+    box-shadow: 0 14px 34px -12px rgba(46,33,26,0.28);
+    font-size: 12.5px; font-weight: 700;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .float-badge .dot { width: 8px; height: 8px; border-radius: 100px; flex-shrink: 0; }
+  .badge-1 { top: 6%; left: -14%; }
+  .badge-1 .dot { background: var(--sage); }
+  .badge-2 { bottom: 10%; right: -12%; }
+  .badge-2 .dot { background: var(--gold); }
+  @media (max-width: 880px) { .float-badge { display: none; } }
+
+  /* ---------- SECTION helpers ---------- */
+  section { padding: 88px 0; }
+  .section-head { max-width: 640px; margin-bottom: 52px; }
+  .section-eyebrow {
+    font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+  .section-head h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; letter-spacing: -0.015em; line-height: 1.12; }
+  .section-head p { margin-top: 14px; font-size: 16.5px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how { background: var(--oat); }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .how { background: var(--surface); } }
+  :root[data-theme="dark"] .how { background: var(--surface); }
+  .how-steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    counter-reset: step;
+    background: var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  @media (max-width: 780px) { .how-steps { grid-template-columns: 1fr; } }
+  .how-step { background: var(--surface-2); padding: 32px 28px 34px; counter-increment: step; }
+  .how-step-num {
+    font-family: 'JetBrains Mono'; font-weight: 800; font-size: 13px;
+    color: var(--terracotta);
+  }
+  .how-step-num::before { content: "0" counter(step); }
+  .how-step h3 { margin-top: 14px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; }
+  .how-step p { margin-top: 9px; font-size: 14.5px; line-height: 1.55; color: var(--text-secondary); }
+
+  /* ---------- FEATURES ---------- */
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .features-grid { grid-template-columns: 1fr; } }
+  .feature-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 26px 24px;
+  }
+  .feature-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; margin-bottom: 16px;
+  }
+  .feature-card h3 { font-size: 16.5px; font-weight: 800; letter-spacing: -0.005em; }
+  .feature-card p { margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--text-secondary); }
+
+  /* ---------- SOCIAL PROOF / STRIP ---------- */
+  .strip {
+    background: var(--espresso); color: var(--cream);
+    padding: 56px 0;
+  }
+  .strip-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+  @media (max-width: 780px) { .strip-grid { grid-template-columns: repeat(2, 1fr); row-gap: 34px; } }
+  .strip-num { font-family: 'JetBrains Mono'; font-weight: 800; font-size: 30px; }
+  .strip-label { margin-top: 6px; font-size: 12.5px; font-weight: 600; color: rgba(250,245,238,0.65); text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ---------- CHART SECTION (activity) ---------- */
+  .activity-panel {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 780px) { .activity-panel { grid-template-columns: 1fr; } }
+  .legend { display: flex; gap: 18px; margin-top: 18px; }
+  .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--text-secondary); }
+  .legend-dot { width: 9px; height: 9px; border-radius: 100px; }
+
+  /* ---------- CTA ---------- */
+  .cta-band {
+    background: var(--terracotta);
+    color: var(--cream);
+    border-radius: 28px;
+    padding: 56px 44px;
+    text-align: center;
+    margin: 0 28px;
+    max-width: 1064px;
+    margin-inline: auto;
+  }
+  .cta-band h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; letter-spacing: -0.015em; }
+  .cta-band p { margin-top: 12px; font-size: 16px; color: rgba(250,245,238,0.85); }
+  .cta-band .hero-actions { justify-content: center; margin-top: 28px; }
+  .cta-band .btn-primary { background: var(--cream); color: var(--espresso); }
+  .cta-band .btn-secondary { border-color: rgba(250,245,238,0.4); color: var(--cream); }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 56px 0 40px; border-top: 1px solid var(--border); margin-top: 40px; }
+  .footer-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 32px; }
+  .footer-brand { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 16px; }
+  .footer-tag { margin-top: 10px; font-size: 13px; color: var(--text-muted); max-width: 28ch; line-height: 1.5; }
+  .footer-links { display: flex; gap: 48px; flex-wrap: wrap; }
+  .footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-faint); font-weight: 700; margin-bottom: 14px; }
+  .footer-col a { display: block; font-size: 14px; font-weight: 600; color: var(--text-secondary); text-decoration: none; margin-bottom: 10px; }
+  .footer-col a:hover { color: var(--terracotta); }
+  .footer-bottom { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono'; }
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand"><span class="brand-mark">C</span>Cupdin</div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#activity">Your stats</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a class="nav-cta" href="#get">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Now live in Hyderabad</div>
+      <h1>Your cafe visits, <em>worth remembering.</em></h1>
+      <p class="hero-sub">Save every cafe you visit — what you drank, where you sat, who you were with. Cupdin turns your cafe trips into memories you can look back on, and helps you find the best spots in the city.</p>
+      <div class="hero-actions" id="get">
+        <a class="btn-primary" href="#">
+          <span aria-hidden="true">􀣺</span> Get it on Play Store
+        </a>
+        <a class="btn-secondary" href="#">Get it on App Store</a>
+      </div>
+      <div class="store-note">FREE · NO ADS ON YOUR FEED · IOS &amp; ANDROID</div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">2.4k+</div>
+          <div class="hero-stat-label">Visits logged</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">380+</div>
+          <div class="hero-stat-label">Cafes mapped</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">4.6<span class="mono" style="font-size:14px">★</span></div>
+          <div class="hero-stat-label">Avg. cafe rating</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-phone-col">
+      <div class="float-badge badge-1"><span class="dot"></span>Flat White & Banana Bread</div>
+      <div class="float-badge badge-2"><span class="dot"></span>+12 loved this week</div>
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <div class="ph-header">
+            <div class="ph-title">Cupdin</div>
+            <div class="ph-avatar">HP</div>
+          </div>
+          <div class="ph-tabs">
+            <div class="ph-tab active">Hyderabad</div>
+            <div class="ph-tab inactive">Following</div>
+          </div>
+          <div class="ph-feed">
+            <div class="ph-card">
+              <div class="ph-card-head">
+                <div class="ph-card-avatar">RA</div>
+                <div>
+                  <div class="ph-card-name">Riya A.</div>
+                  <div class="ph-card-time">12m ago</div>
+                </div>
+                <div class="ph-tier">Top pick</div>
+              </div>
+              <div class="ph-photo"><span>visit photo</span></div>
+              <div class="ph-card-body">
+                <div class="ph-items">Flat White, Banana Bread</div>
+                <div class="ph-cafe">Roastery Coffee House · Jubilee Hills</div>
+                <div class="ph-like"><span class="ph-like-heart">♥</span><span class="ph-like-count">24</span></div>
+              </div>
+            </div>
+            <div class="ph-card">
+              <div class="ph-card-head">
+                <div class="ph-card-avatar" style="background:#7C8F6B">VK</div>
+                <div>
+                  <div class="ph-card-name">Vikram K.</div>
+                  <div class="ph-card-time">1h ago</div>
+                </div>
+              </div>
+              <div class="ph-card-body" style="padding-top:11px">
+                <div class="ph-items">Cold Brew & Croissant</div>
+                <div class="ph-cafe">Dialogues Cafe · Banjara Hills</div>
+                <div class="ph-like"><span class="ph-like-heart" style="color:#B9AA9B">♥</span><span class="ph-like-count">9</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="ph-navbar">
+            <div class="ph-nav-item active">
+              <span class="ph-nav-icon">♥</span>
+              <span class="ph-nav-label">Feed</span>
+            </div>
+            <div class="ph-nav-spacer"></div>
+            <div class="ph-nav-item inactive">
+              <span class="ph-nav-icon">☺</span>
+              <span class="ph-nav-label">Profile</span>
+            </div>
+          </div>
+          <div class="ph-fab">+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">The loop</div>
+      <h2>Three taps between "great coffee" and a memory you can find again.</h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-num"></div>
+        <h3>Find the cafe</h3>
+        <p>Search Hyderabad's cafes as you sit down — ratings, work-friendly tags, and what regulars order are right there.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num"></div>
+        <h3>Tap what you had</h3>
+        <p>Multi-select off the actual menu, or type your own. No forms, no keyboard unless you want one.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num"></div>
+        <h3>Post it — public or just friends</h3>
+        <p>Add a photo, tag who you were with, and choose who sees it. It lands straight in the Hyderabad feed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">What's inside</div>
+      <h2>Built for people who have opinions about their coffee order.</h2>
+      <p>Every screen in Cupdin is tuned for the two-minute window between ordering and your drink arriving.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(193,89,42,0.12); color:#C1592A;">♥</div>
+        <h3>A feed that's just cafes</h3>
+        <p>Hyderabad-wide or Following-only — see what people ordered, where, and whether they'd go back.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(46,33,26,0.08); color:#2E211A;">👥</div>
+        <h3>Tag who you were with</h3>
+        <p>Log a visit with friends already on Cupdin, or invite the ones who aren't yet.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(124,143,107,0.15); color:#5c6e4c;">✓</div>
+        <h3>Work-friendly tags</h3>
+        <p>Know before you go: which cafes are fine with a laptop and a two-hour flat white.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(217,164,65,0.22); color:#8a651f;">★</div>
+        <h3>Cafe profiles that mean something</h3>
+        <p>Real ratings, full menus, and "people you know" who've actually been — not a generic listing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(193,89,42,0.12); color:#C1592A;">🔒</div>
+        <h3>Public or private, your call</h3>
+        <p>Post to all of Hyderabad, or keep a visit just between friends. Set per log, every time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:rgba(217,164,65,0.22); color:#8a651f;">♛</div>
+        <h3>Your loved ones list</h3>
+        <p>Cupdin quietly ranks your most-visited cafes so you always know where you'd take a friend.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap strip-grid">
+    <div><div class="strip-num">100%</div><div class="strip-label">Real menus, real cafes</div></div>
+    <div><div class="strip-num">0</div><div class="strip-label">Ads in your feed</div></div>
+    <div><div class="strip-num">2</div><div class="strip-label">Taps to log a visit</div></div>
+    <div><div class="strip-num">1</div><div class="strip-label">City so far — yours next</div></div>
+  </div>
+</div>
+
+<section id="activity">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Your stats</div>
+      <h2>Six weeks of your habit, laid out plainly.</h2>
+      <p>Cupdin tracks beverages and food separately, week over week, so your profile becomes a quiet record of the year in cafes.</p>
+    </div>
+    <div class="activity-panel">
+      <div>
+        <div style="font-family:'JetBrains Mono'; font-weight:800; font-size:15px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em;">Weekly totals</div>
+        <h3 style="font-size:22px; font-weight:800; margin-top:8px; letter-spacing:-0.01em;">Last 6 weeks</h3>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#C1592A"></span>Beverage</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#7C8F6B"></span>Food</div>
+        </div>
+        <p style="margin-top:16px; font-size:14px; color:var(--text-secondary); line-height:1.6;">This chart lives on your own profile in the app — updating in real time as you log visits.</p>
+      </div>
+      <svg viewBox="0 0 420 190" width="100%" role="img" aria-label="Six-week chart of beverage and food visits, both trending upward">
+        <line x1="30" y1="20" x2="410" y2="20" stroke="var(--border)" stroke-width="1"/>
+        <line x1="30" y1="63" x2="410" y2="63" stroke="var(--border)" stroke-width="1"/>
+        <line x1="30" y1="106" x2="410" y2="106" stroke="var(--border)" stroke-width="1"/>
+        <line x1="30" y1="149" x2="410" y2="149" stroke="var(--border)" stroke-width="1"/>
+        <text x="24" y="24" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="var(--text-muted)">12</text>
+        <text x="24" y="67" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="var(--text-muted)">8</text>
+        <text x="24" y="110" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="var(--text-muted)">4</text>
+        <text x="24" y="153" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="var(--text-muted)">0</text>
+
+        <polyline points="45,120 115,108 185,98 255,80 325,68 395,50" fill="none" stroke="#C1592A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <polyline points="45,140 115,135 185,120 255,115 325,100 395,90" fill="none" stroke="#7C8F6B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#C1592A">
+          <circle cx="45" cy="120" r="3.5"/><circle cx="115" cy="108" r="3.5"/><circle cx="185" cy="98" r="3.5"/>
+          <circle cx="255" cy="80" r="3.5"/><circle cx="325" cy="68" r="3.5"/><circle cx="395" cy="50" r="3.5"/>
+        </g>
+        <g fill="#7C8F6B">
+          <circle cx="45" cy="140" r="3.5"/><circle cx="115" cy="135" r="3.5"/><circle cx="185" cy="120" r="3.5"/>
+          <circle cx="255" cy="115" r="3.5"/><circle cx="325" cy="100" r="3.5"/><circle cx="395" cy="90" r="3.5"/>
+        </g>
+        <text x="45" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="var(--text-muted)">Jul 14</text>
+        <text x="115" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="var(--text-muted)">Jul 21</text>
+        <text x="185" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="var(--text-muted)">Jul 28</text>
+        <text x="255" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="var(--text-muted)">Aug 4</text>
+        <text x="325" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="var(--text-muted)">Aug 11</text>
+        <text x="395" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9.5" fill="var(--text-muted)">Aug 18</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="cta-band">
+    <h2>Your next cafe visit is worth logging.</h2>
+    <p>Free on iOS and Android. No ads in your feed, ever.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#">Get it on Play Store</a>
+      <a class="btn-secondary" href="#">Get it on App Store</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><span class="brand-mark">C</span>Cupdin</div>
+        <p class="footer-tag">A cafe visit log for Hyderabad — and wherever we go next.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <a href="#how">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#activity">Your stats</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy policy</a>
+          <a href="terms.html">Terms & conditions</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="mailto:hello@cupdin.com">hello@cupdin.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Cupdin. Made in Hyderabad.</span>
+      <span>v1.0.0</span>
+    </div>
+  </div>
+</footer>
