@@ -1,0 +1,292 @@
+<title>Page Not Found — Cupdin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap');
+
+  :root {
+    --cream: #FAF5EE;
+    --espresso: #2E211A;
+    --terracotta: #C1592A;
+    --sage: #7C8F6B;
+    --gold: #D9A441;
+    --oat: #F1E9DD;
+    --taupe: #B9AA9B;
+    --text-secondary: #5c4d42;
+    --text-muted: #8a7a68;
+    --text-faint: #9c8f7a;
+
+    --bg: var(--cream);
+    --ink: var(--espresso);
+    --surface: var(--oat);
+    --surface-2: #ffffff;
+    --border: rgba(46,33,26,0.10);
+    --accent: var(--terracotta);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #211812; --ink: #F5EEE4; --surface: #2c2119; --surface-2: #33261c;
+      --border: rgba(245,238,228,0.10);
+      --text-secondary: #cbb9a7; --text-muted: #a5927e; --text-faint: #8f7d6a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #211812; --ink: #F5EEE4; --surface: #2c2119; --surface-2: #33261c;
+    --border: rgba(245,238,228,0.10);
+    --text-secondary: #cbb9a7; --text-muted: #a5927e; --text-faint: #8f7d6a;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  a { color: inherit; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  .wrap { max-width: 1120px; margin: 0; padding: 0 56px; }
+  @media (max-width: 640px) { .wrap { padding: 0 24px; } }
+
+  /* ---------- NAV (matches site shell) ---------- */
+  .nav { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 56px; max-width: 1120px; margin: 0; }
+  @media (max-width: 640px) { .nav-inner { padding: 16px 24px; } }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+  .brand-mark { width: 32px; height: 32px; border-radius: 9px; background: var(--espresso); color: var(--cream); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 800; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; font-weight: 600; color: var(--text-secondary); }
+  .nav-links a { text-decoration: none; color: inherit; }
+  .nav-links a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .nav-links { gap: 16px; font-size: 13px; } }
+
+  /* ---------- 404 STAGE ---------- */
+  .stage {
+    min-height: calc(100vh - 65px);
+    display: flex;
+    align-items: center;
+    padding: 56px 0 64px;
+  }
+  .stage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+  }
+  @media (max-width: 860px) {
+    .stage-grid { grid-template-columns: 1fr; }
+    .scene-col { order: -1; max-width: 380px; margin: 0 auto; }
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--terracotta);
+    background: rgba(193,89,42,0.10);
+    padding: 6px 12px; border-radius: 100px;
+    margin-bottom: 22px;
+  }
+
+  .code {
+    font-family: 'JetBrains Mono';
+    font-weight: 800;
+    font-size: clamp(64px, 9vw, 108px);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+  .code .spilled {
+    display: inline-block;
+    color: var(--terracotta);
+    transform: rotate(-8deg) translateY(4px);
+  }
+
+  .copy h1 {
+    margin: 18px 0 0;
+    font-size: clamp(26px, 3.2vw, 34px);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  .copy p {
+    margin-top: 14px;
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 46ch;
+  }
+  .actions { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .btn-primary, .btn-secondary {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 13px 22px; border-radius: 100px;
+    font-weight: 700; font-size: 15px; text-decoration: none;
+    border: none; cursor: pointer;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-secondary { background: transparent; color: var(--ink); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--taupe); }
+
+  .receipt {
+    margin-top: 36px;
+    font-family: 'JetBrains Mono';
+    font-size: 12.5px;
+    color: var(--text-faint);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-top: 1px dashed var(--border);
+    padding-top: 16px;
+    max-width: 340px;
+  }
+  .receipt .row { display: flex; justify-content: space-between; gap: 12px; }
+
+  /* ---------- SCENE: the spilled cup ---------- */
+  .scene-col { position: relative; }
+  .scene {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 0.82;
+  }
+
+  @keyframes tip {
+    0%, 8% { transform: rotate(0deg); }
+    26%, 74% { transform: rotate(-34deg); }
+    92%, 100% { transform: rotate(0deg); }
+  }
+  @keyframes pool {
+    0%, 26% { opacity: 0; transform: scale(0.5); }
+    42% { opacity: 1; transform: scale(1); }
+    88%, 100% { opacity: 1; transform: scale(1); }
+  }
+  @keyframes steamRise {
+    0% { opacity: 0; transform: translateY(0) scaleX(1); }
+    15% { opacity: 0.55; }
+    100% { opacity: 0; transform: translateY(-34px) scaleX(1.4); }
+  }
+  @keyframes crackAppear {
+    0%, 24% { stroke-dashoffset: 40; opacity: 0; }
+    36% { stroke-dashoffset: 0; opacity: 1; }
+    100% { stroke-dashoffset: 0; opacity: 1; }
+  }
+  @keyframes wobbleTable {
+    0%, 24% { transform: translateY(0); }
+    28% { transform: translateY(1.5px); }
+    32% { transform: translateY(0); }
+    100% { transform: translateY(0); }
+  }
+
+  .cup-group { transform-origin: 189px 148px; animation: tip 6s ease-in-out infinite; }
+  .steam-1 { animation: steamRise 3.5s ease-out infinite; animation-delay: 0.2s; }
+  .steam-2 { animation: steamRise 3.5s ease-out infinite; animation-delay: 1.4s; }
+  .steam-3 { animation: steamRise 3.5s ease-out infinite; animation-delay: 2.5s; }
+  .puddle { transform-origin: center; animation: pool 6s ease-in-out infinite; }
+  .crack-line { stroke-dasharray: 40; animation: crackAppear 6s ease-in-out infinite; }
+  .table-surface { animation: wobbleTable 6s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cup-group, .steam-1, .steam-2, .steam-3, .puddle, .crack-line, .table-surface {
+      animation: none !important;
+    }
+    .cup-group { transform: rotate(-30deg); }
+    .puddle { opacity: 1; transform: scale(1); }
+    .crack-line { stroke-dashoffset: 0; opacity: 1; }
+  }
+
+  .scene-caption {
+    margin-top: 18px;
+    text-align: center;
+    font-family: 'JetBrains Mono';
+    font-size: 11.5px;
+    color: var(--text-faint);
+    letter-spacing: 0.02em;
+  }
+
+  footer { padding: 28px 0 40px; border-top: 1px solid var(--border); }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono'; }
+</style>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">C</span>Cupdin</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</nav>
+
+<main class="stage">
+  <div class="wrap stage-grid">
+    <div class="copy">
+      <div class="eyebrow">Table not found</div>
+      <div class="code" aria-hidden="true">4<span class="spilled">0</span>4</div>
+      <h1>Someone knocked this page over.</h1>
+      <p>There's no cafe, log, or page at this address — it might've moved, or the link just got the order wrong. Let's get you back to a table that exists.</p>
+      <div class="actions">
+        <a class="btn-primary" href="index.html">Back to Cupdin</a>
+        <a class="btn-secondary" href="mailto:hello@cupdin.com">Report a broken link</a>
+      </div>
+      <div class="receipt">
+        <div class="row"><span>STATUS</span><span>404 — NOT FOUND</span></div>
+        <div class="row"><span>ITEM</span><span>1 × REQUESTED PAGE</span></div>
+        <div class="row"><span>RESULT</span><span>SPILLED, UNRECOVERABLE</span></div>
+      </div>
+    </div>
+
+    <div class="scene-col">
+      <div class="scene" role="img" aria-label="An animated illustration of a coffee cup tipping over, spilling coffee, and cracking on a table">
+        <svg viewBox="0 0 320 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <!-- table -->
+          <g class="table-surface">
+            <rect x="0" y="196" width="320" height="6" fill="var(--border)"/>
+            <rect x="0" y="202" width="320" height="58" fill="var(--surface)"/>
+          </g>
+
+          <!-- puddle (spilled coffee pooling on table) -->
+          <g class="puddle">
+            <ellipse cx="118" cy="208" rx="72" ry="13" fill="var(--terracotta)" opacity="0.85"/>
+            <ellipse cx="70" cy="204" rx="16" ry="7" fill="var(--terracotta)" opacity="0.6"/>
+            <ellipse cx="176" cy="206" rx="10" ry="5" fill="var(--terracotta)" opacity="0.5"/>
+          </g>
+
+          <!-- steam -->
+          <g class="steam-1" opacity="0"><path d="M 172 96 C 168 88, 176 82, 172 74" fill="none" stroke="var(--taupe)" stroke-width="2.5" stroke-linecap="round"/></g>
+          <g class="steam-2" opacity="0"><path d="M 184 100 C 180 92, 188 86, 184 78" fill="none" stroke="var(--taupe)" stroke-width="2.5" stroke-linecap="round"/></g>
+          <g class="steam-3" opacity="0"><path d="M 196 96 C 192 88, 200 82, 196 74" fill="none" stroke="var(--taupe)" stroke-width="2.5" stroke-linecap="round"/></g>
+
+          <!-- saucer -->
+          <ellipse cx="210" cy="150" rx="46" ry="9" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
+
+          <!-- cup group: tips over -->
+          <g class="cup-group">
+            <!-- handle -->
+            <path d="M 240 122 C 256 122, 256 144, 240 144" fill="none" stroke="var(--espresso)" stroke-width="5" stroke-linecap="round"/>
+            <!-- cup body -->
+            <path d="M 182 116 L 240 116 L 234 148 C 233 152, 189 152, 188 148 Z" fill="var(--surface-2)" stroke="var(--espresso)" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- coffee inside rim -->
+            <ellipse cx="211" cy="117" rx="29" ry="6" fill="var(--terracotta)"/>
+            <ellipse cx="211" cy="117" rx="29" ry="6" fill="none" stroke="var(--espresso)" stroke-width="2"/>
+          </g>
+
+          <!-- crack in the saucer, appears once things go wrong -->
+          <path class="crack-line" d="M 196 147 L 204 153 L 200 158 L 210 163" fill="none" stroke="var(--espresso)" stroke-width="1.5" stroke-linecap="round" opacity="0"/>
+        </svg>
+      </div>
+      <div class="scene-caption">cup status: tipped, twice daily, on loop</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Cupdin. Made in Hyderabad.</span>
+    <span><a href="index.html">Home</a> · <a href="privacy.html">Privacy policy</a> · <a href="terms.html">Terms &amp; conditions</a></span>
+  </div>
+</footer>
