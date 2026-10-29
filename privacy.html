@@ -117,7 +117,7 @@
   <div class="wrap">
     <div class="doc-eyebrow">Legal</div>
     <h1>Privacy Policy</h1>
-    <div class="doc-meta">Effective October 24, 2026 · Cupdin, an independently developed app based in India</div>
+    <div class="doc-meta">Effective October 29, 2026 · Cupdin, an independently developed app based in India</div>
     <p class="doc-lede">This explains what Cupdin collects when you log a cafe visit, why, and the choices you have. Plain language first — the specifics are below.</p>
   </div>
 </header>
@@ -150,10 +150,10 @@
       <div class="data-table">
         <div class="data-row head"><div>Category</div><div>What it includes</div><div>Why we collect it</div></div>
         <div class="data-row"><div class="cat" data-label="Category">Account info</div><div class="why" data-label="Includes">Name, email address, profile photo, and your two-letter avatar initials. If you sign in with Google or Apple, we receive your name and email address from them (never your password)</div><div class="why" data-label="Why">To create and secure your account, and identify you to other users</div></div>
-        <div class="data-row"><div class="cat" data-label="Category">Visit logs</div><div class="why" data-label="Includes">Cafe selected, items ordered, notes, companions tagged, and a public/private visibility setting</div><div class="why" data-label="Why">This is the core content of the app — what you post to your feed</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">Visit logs</div><div class="why" data-label="Includes">Cafe selected, items ordered, notes, companions tagged, who can see the visit (public, followers only, or only you), any people you chose to hide it from, and whether the visit was logged on-site ("verified")</div><div class="why" data-label="Why">This is the core content of the app — what you post to your feed</div></div>
         <div class="data-row"><div class="cat" data-label="Category">Likes &amp; comments</div><div class="why" data-label="Includes">Logs you like, and any comments you post on a visit log</div><div class="why" data-label="Why">To power likes and discussion on posts across the feed</div></div>
         <div class="data-row"><div class="cat" data-label="Category">Photos</div><div class="why" data-label="Includes">Any photo you attach to a visit log, chosen from your device's photo library or taken with the camera</div><div class="why" data-label="Why">To show a photo alongside your log entry, stored in Supabase Storage</div></div>
-        <div class="data-row"><div class="cat" data-label="Category">City / location</div><div class="why" data-label="Includes">The city you set on your profile (e.g. Hyderabad) — not continuous or background GPS tracking</div><div class="why" data-label="Why">To show you the right city feed and local cafes</div></div>
+        <div class="data-row"><div class="cat" data-label="Category">City / location</div><div class="why" data-label="Includes">The city you set on your profile (e.g. Hyderabad). If you allow it, your device's location while the app is open: used on your phone to suggest nearby cafes, and sent to our servers once when you post a visit so we can check whether you are at the cafe. We keep only whether the visit was verified and roughly how far you were (in metres) — not your coordinates, and no history of where you've been. There is no background location tracking</div><div class="why" data-label="Why">To show you the right city feed and local cafes, suggest cafes near you, and mark visits you log on-site</div></div>
         <div class="data-row"><div class="cat" data-label="Category">Social graph</div><div class="why" data-label="Includes">Who you follow, who follows you, blocked users, and companions tagged on a visit</div><div class="why" data-label="Why">To power your Following feed and friend-tagging features</div></div>
         <div class="data-row"><div class="cat" data-label="Category">Usage &amp; device data</div><div class="why" data-label="Includes">App version, error and crash logs, and basic device info</div><div class="why" data-label="Why">To diagnose bugs and keep the app stable</div></div>
       </div>
@@ -164,6 +164,8 @@
       <h2><span class="num">03</span>How we use it</h2>
       <ul>
         <li><strong>To run the feed.</strong> Your public logs are shown to other users in your city's feed; followers-only logs are shown only to you, people you've tagged, and people who follow you, per the visibility you chose.</li>
+        <li><strong>To suggest cafes and mark visits as verified.</strong> With your permission, your location (while the app is open) is used to suggest nearby cafes and, when you post, to check whether you are at the cafe. A verified visit shows a small tick. Visits you log from elsewhere, or without location, work normally and just have no tick.</li>
+        <li><strong>To rank top visitors.</strong> A cafe's page can list its most frequent visitors, counted only from verified, public visits that aren't hidden from anyone. It shows names, ranks and visit counts, not when you visited.</li>
         <li><strong>To power your profile.</strong> Visit counts, your loved-cafes ranking, and your 6-week activity chart are all computed from your own logged visits.</li>
         <li><strong>To connect you with friends.</strong> Follower/following relationships and companion-tagging use your social graph data.</li>
         <li><strong>To keep the app working and safe.</strong> Crash reports and moderation tools (like blocking and reporting) use account and usage data.</li>
@@ -177,7 +179,10 @@
       <ul>
         <li><strong>Public logs</strong> are visible to anyone using the app in your city's feed, along with your name, avatar, and any tagged companions.</li>
         <li><strong>Likes and comments</strong> on a log are visible to anyone who can see that log, along with your name and avatar.</li>
-        <li><strong>Followers-only logs</strong> are visible only to you and the people who follow you, per the in-app visibility toggle. Public logs you share through a link can also be opened in a web browser by anyone with that link.</li>
+        <li><strong>Followers-only logs</strong> are visible only to you and the people who follow you, per the in-app visibility setting, and <strong>only-me logs</strong> are visible only to you.</li>
+        <li><strong>Hidden-from lists.</strong> You can hide a visit from specific people. They won't be told, and the visit won't appear to them anywhere in the app. If someone you tagged has hidden themselves from a viewer, that viewer won't see the tag.</li>
+        <li><strong>Shared links.</strong> Public logs you share through a link can be opened in a web browser by anyone with that link, including people a visit is hidden from inside the app. Don't share the link of a visit you want kept from someone.</li>
+        <li><strong>Top visitors.</strong> If your verified, public visits to a cafe qualify, your name, avatar and visit count may appear in that cafe's Top visitors list.</li>
         <li><strong>Your profile</strong> (name, avatar, stats, loved cafes) is visible to other users of the app.</li>
       </ul>
       <div class="callout"><strong>We do not sell personal data</strong> to advertisers or data brokers, and we don't share it with third parties for their own marketing purposes.</div>
@@ -201,7 +206,8 @@
       <h2><span class="num">06</span>Your choices</h2>
       <ul>
         <li><strong>Edit or delete a log</strong> any time from your profile.</li>
-        <li><strong>Switch a log's visibility</strong> between public and followers-only when you post it.</li>
+        <li><strong>Choose who sees a log</strong> (public, followers only, or only you) when you post it, and change it later. Keep a list of people to hide your visits from in Settings, and adjust it for any single visit.</li>
+        <li><strong>Control location access</strong> through your device's permission prompt. Cupdin works without it, and you can turn it off any time in your device settings.</li>
         <li><strong>Block or report</strong> another user directly from their profile or a log of theirs.</li>
         <li><strong>Control photo access</strong> through your device's OS-level permission prompt — Cupdin only requests your photo library or camera when you choose to add a photo.</li>
         <li><strong>Delete your account</strong> any time from Settings in the app — this permanently removes your account, visit logs, photos, comments, and connections. You can also reach us at <a href="mailto:hello@cupdin.com">hello@cupdin.com</a> for help.</li>
