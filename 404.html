@@ -1,4 +1,14 @@
 <title>Page Not Found — Cupdin</title>
+<script>
+  // cupdin.com/<short_id> profile links: forward to the share page, which resolves the id.
+  (function () {
+    var m = location.pathname.match(/^\/([a-z0-9]{5,6})\/?$/i);
+    var reserved = ['privacy', 'terms', 'index'];
+    if (m && reserved.indexOf(m[1].toLowerCase()) === -1) {
+      location.replace('https://share.cupdin.com/u/' + m[1].toLowerCase());
+    }
+  })();
+</script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap');
 
