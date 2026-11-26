@@ -1,24 +1,26 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cupdin Terms &amp; Conditions</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap');
 
   :root {
     --cream: #FAF5EE;
-    --espresso: #2E211A;
+    --espresso: #2B211A;
     --terracotta: #C1592A;
     --sage: #7C8F6B;
     --gold: #D9A441;
-    --oat: #F1E9DD;
+    --oat: #EFE6D8;
     --taupe: #B9AA9B;
-    --text-secondary: #5c4d42;
-    --text-muted: #8a7a68;
+    --text-secondary: #6F5F54;
+    --text-muted: #6F5F54;
     --text-faint: #9c8f7a;
 
     --bg: var(--cream);
     --ink: var(--espresso);
     --surface: var(--oat);
     --surface-2: #ffffff;
-    --border: rgba(46,33,26,0.10);
+    --border: rgba(43,33,26,0.10);
     --accent: var(--terracotta);
   }
   @media (prefers-color-scheme: dark) {
@@ -37,7 +39,7 @@
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
   a { color: var(--terracotta); }
-  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  .mono { font-family: 'Manrope', system-ui, sans-serif; }
 
   .wrap { max-width: 1120px; margin: 0; padding: 0 56px; }
   @media (max-width: 640px) { .wrap { padding: 0 24px; } }
@@ -54,16 +56,16 @@
   @media (max-width: 640px) { .nav-links { gap: 16px; font-size: 13px; } }
 
   .doc-head { padding: 56px 0 36px; border-bottom: 1px solid var(--border); }
-  .doc-eyebrow { font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracotta); margin-bottom: 14px; }
+  .doc-eyebrow { font-family: 'Manrope', system-ui, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--terracotta); margin-bottom: 14px; }
   .doc-head h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 800; letter-spacing: -0.015em; margin: 0; text-wrap: balance; }
-  .doc-meta { margin-top: 14px; font-size: 13.5px; color: var(--text-muted); font-family: 'JetBrains Mono'; }
+  .doc-meta { margin-top: 14px; font-size: 13.5px; color: var(--text-muted); font-family: 'Manrope', system-ui, sans-serif; }
   .doc-lede { margin-top: 20px; font-size: 16.5px; line-height: 1.6; color: var(--text-secondary); max-width: 62ch; }
 
   .layout { display: grid; grid-template-columns: 220px 1fr; gap: 56px; padding: 48px 0 100px; align-items: start; }
-  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .layout { grid-template-columns: 1fr; padding-left: 24px; padding-right: 24px; } }
 
   .toc { position: sticky; top: 88px; }
-  .toc-label { font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 14px; }
+  .toc-label { font-family: 'Manrope', system-ui, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint); margin-bottom: 14px; }
   .toc a { display: block; font-size: 13.5px; font-weight: 600; color: var(--text-secondary); text-decoration: none; padding: 7px 0; border-left: 2px solid var(--border); padding-left: 14px; }
   .toc a:hover { color: var(--terracotta); border-left-color: var(--terracotta); }
   @media (max-width: 860px) { .toc { position: static; display: none; } }
@@ -72,7 +74,7 @@
   .doc-body section { padding-top: 40px; margin-top: 40px; border-top: 1px solid var(--border); scroll-margin-top: 90px; }
   .doc-body section:first-child { margin-top: 0; padding-top: 0; border-top: none; }
   .doc-body h2 { font-size: 21px; font-weight: 800; letter-spacing: -0.01em; display: flex; align-items: baseline; gap: 10px; }
-  .doc-body h2 .num { font-family: 'JetBrains Mono'; font-size: 13px; color: var(--text-faint); font-weight: 700; }
+  .doc-body h2 .num { font-family: 'Manrope', system-ui, sans-serif; font-size: 13px; color: var(--text-faint); font-weight: 700; }
   .doc-body h3 { font-size: 15px; font-weight: 700; margin-top: 24px; }
   .doc-body p { font-size: 15px; line-height: 1.7; color: var(--text-secondary); margin-top: 14px; }
   .doc-body ul { margin-top: 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -89,9 +91,10 @@
   .contact-card a { color: var(--cream); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
   footer { padding: 44px 0 40px; border-top: 1px solid var(--border); }
-  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--text-faint); font-family: 'JetBrains Mono'; }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12.5px; color: var(--text-faint); font-family: 'Manrope', system-ui, sans-serif; }
   .footer-bottom a { color: var(--text-muted); text-decoration: none; }
   .footer-bottom a:hover { color: var(--terracotta); }
+  h1, h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; }
 </style>
 
 <nav class="nav">
