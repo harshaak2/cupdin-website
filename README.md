@@ -3,8 +3,8 @@
 Marketing site and legal pages for **Cupdin**, a cafe-visit social app.
 
 Static HTML, no build step — visual system matches the app's own design tokens
-(`#FAF5EE` cream, `#2E211A` espresso, `#C1592A` terracotta, `#7C8F6B` sage,
-`#D9A441` gold; Manrope + JetBrains Mono).
+(`CafeSocial/src/theme/tokens.ts`: cream `#FAF5EE`, ink `#2B211A`,
+terracotta `#A94A22` / `#C1592A`; Fraunces + Manrope).
 
 ## Pages
 
@@ -29,11 +29,8 @@ Any static host works (GitHub Pages, Netlify, Vercel, Cloudflare Pages). For
 GitHub Pages: push to a repo, enable Pages on the `main` branch root, and
 `index.html` will serve at the repo's Pages URL automatically.
 
-## To do before app store submission
+## Before publishing
 
-- Swap the placeholder "Get it on Play Store / App Store" buttons for the
-  official store badge assets once listing URLs exist.
-- Replace placeholder stats in the landing page hero/strip sections with real
-  numbers, or remove them.
-- Confirm the `hello@cupdin.com` contact address is live before submitting
-  store listings (both stores link to the privacy policy from the listing).
+- `index.html` describes version 1.1: publish it when that version is in the stores.
+- Remove `hidden` from the two Google Play badges once the Android listing is live.
+- Do not add visit, cafe or rating counts to the site.
